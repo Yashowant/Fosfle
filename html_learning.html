@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/png" href="download.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Beginner HTML Tutorial</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        padding-bottom: 50px;
+      }
+      h1,
+      h2 {
+        text-align: center;
+        color: #4caf50;
+      }
+      p,
+      code {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      code {
+        background-color: #f4f4f4;
+        padding: 5px;
+        border-radius: 5px;
+        font-family: Consolas, monospace;
+      }
+      pre {
+        background-color: #e9ecef;
+        border-radius: 5px;
+        padding: 15px;
+        font-family: Consolas, monospace;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .section-title {
+        background-color: #28a745;
+        color: white;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+      .section-content {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .try-it-yourself {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 10px;
+      }
+      .try-it-yourself:hover {
+        background-color: #0056b3;
+      }
+      .go-back {
+        background-color: #f44336;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 20px;
+        display: inline-block;
+      }
+      .go-back:hover {
+        background-color: #d32f2f;
+      }
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+      iframe {
+        width: 100%;
+        height: 300px;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="Book index.html"> <b>GO BACK<-</b></a>
+    <header>
+      <h1>Beginner HTML Tutorial</h1>
+      <p>Learn HTML from scratch with interactive examples!</p>
+    </header>
+
+    <div class="container">
+      <!-- HTML HOME -->
+      <section>
+        <h2 class="section-title">HTML HOME</h2>
+        <div class="section-content">
+          <p>
+            Welcome to the beginner HTML tutorial. Here you'll find all HTML
+            topics with detailed explanations and interactive "Try it Yourself"
+            sections.
+          </p>
+        </div>
+      </section>
+
+      <!-- HTML Introduction -->
+      <section>
+        <h2 class="section-title">HTML Introduction</h2>
+        <div class="section-content">
+          <p>
+            HTML stands for HyperText Markup Language. It is used to structure
+            the content on the web.
+          </p>
+          <p><strong>Example:</strong></p>
+          <pre><code>&lt;h1&gt;Hello, World!&lt;/h1&gt;</code></pre>
+          <p>This will display the heading <strong>"Hello, World!"</strong></p>
+          <div class="try-it-yourself">
+            <p>Try this code:</p>
+            <iframe srcdoc="<h1>Hello, World!</h1>"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- HTML Editors -->
+      <section>
+        <h2 class="section-title">HTML Editors</h2>
+        <div class="section-content">
+          <p>
+            You can write HTML using any text editor such as Notepad (Windows),
+            TextEdit (Mac), or code editors like Sublime Text, or Visual Studio
+            Code. Save your file with a <code>.html</code> extension.
+          </p>
+        </div>
+      </section>
+
+      <!-- HTML Basic -->
+      <section>
+        <h2 class="section-title">HTML Basic</h2>
+        <div class="section-content">
+          <p>
+            The basic structure of an HTML document includes the
+            <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and
+            <code>&lt;body&gt;</code> tags.
+          </p>
+          <p><strong>Example:</strong></p>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <p>This is the basic structure for an HTML document.</p>
+          <div class="try-it-yourself">
+            <p>Try this code:</p>
+            <iframe
+              srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- HTML Elements -->
+      <section>
+        <h2 class="section-title">HTML Elements</h2>
+        <div class="section-content">
+          <p>
+            HTML elements are the building blocks of HTML. For example,
+            <code>&lt;p&gt;</code> defines a paragraph, and
+            <code>&lt;a&gt;</code> defines a link.
+          </p>
+          <p><strong>Example:</strong></p>
+          <pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+          <p>This will display: <strong>This is a paragraph.</strong></p>
+          <div class="try-it-yourself">
+            <p>Try this code:</p>
+            <iframe srcdoc="&lt;p&gt;This is a paragraph.&lt;/p&gt;"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- HTML Forms -->
+      <section>
+        <h2 class="section-title">HTML Forms</h2>
+        <div class="section-content">
+          <p>
+            Forms allow users to enter data. The
+            <code>&lt;form&gt;</code> element defines an HTML form.
+          </p>
+          <p><strong>Example:</strong></p>
+          <pre><code>&lt;form&gt;
+  &lt;input type="text" name="name"&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;</code></pre>
+          <p>
+            This will create a simple form with a text input and a submit
+            button.
+          </p>
+          <div class="try-it-yourself">
+            <p>Try this form:</p>
+            <iframe
+              srcdoc="&lt;form&gt;&lt;input type='text' name='name'&gt;&lt;input type='submit'&gt;&lt;/form&gt;"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- HTML Links -->
+      <section>
+        <h2 class="section-title">HTML Links</h2>
+        <div class="section-content">
+          <p>
+            Links are created using the <code>&lt;a&gt;</code> tag. The
+            <code>href</code> attribute specifies the destination URL.
+          </p>
+          <p><strong>Example:</strong></p>
+          <pre><code>&lt;a href="https://www.example.com"&gt;Visit Example&lt;/a&gt;</code></pre>
+          <p>
+            This will create a link that leads to "https://www.example.com".
+          </p>
+          <div class="try-it-yourself">
+            <p>Try this link:</p>
+            <iframe
+              srcdoc="&lt;a href='https://www.example.com'&gt;Visit Example&lt;/a&gt;"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer and Go Back Link -->
+      <footer>
+        <p>Beginner HTML Tutorial | &copy; 2025 -Presented by Yashowant</p>
+      </footer>
+    </div>
+  </body>
+</html>
