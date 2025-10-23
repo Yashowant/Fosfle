@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Complete CSS Tutorial — Quick Reference</title>
+    <style>
+      :root {
+        --bg: #0f1724;
+        --card: #0b1220;
+        --muted: #9aa4b2;
+        --accent: #38bdf8;
+        --accent-2: #7c3aed;
+        --glass: rgba(255, 255, 255, 0.03);
+        --maxw: 1100px;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
+          "Courier New", monospace;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        background: linear-gradient(180deg, var(--bg), #071028 40%);
+        color: #e6eef6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.45;
+      }
+      .wrap {
+        max-width: var(--maxw);
+        margin: 32px auto;
+        padding: 24px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.015)
+        );
+        border-radius: 12px;
+        box-shadow: 0 6px 30px rgba(2, 6, 23, 0.6),
+          inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 20px;
+        min-height: 80vh;
+      }
+      header {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 18px;
+        letter-spacing: 0.2px;
+      }
+      header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      nav {
+        background: var(--card);
+        padding: 12px;
+        border-radius: 8px;
+        height: calc(100vh - 160px);
+        overflow: auto;
+        position: sticky;
+        top: 20px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+      }
+      nav a {
+        display: block;
+        color: var(--muted);
+        text-decoration: none;
+        padding: 8px 6px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--accent);
+      }
+      article {
+        background: var(--glass);
+        padding: 18px;
+        border-radius: 8px;
+        overflow: auto;
+        height: calc(100vh - 160px);
+        position: relative;
+      }
+      section {
+        margin-bottom: 22px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+      }
+      h2 {
+        margin: 0 0 8px 0;
+        font-size: 16px;
+        color: var(--accent);
+      }
+      h3 {
+        margin: 8px 0;
+        font-size: 14px;
+        color: var(--accent-2);
+      }
+      p.lead {
+        color: var(--muted);
+        margin: 6px 0 12px 0;
+        font-size: 13px;
+      }
+      pre.code {
+        background: #071028;
+        color: #cfefff;
+        padding: 12px;
+        border-radius: 6px;
+        overflow: auto;
+        font-family: var(--mono);
+        font-size: 13px;
+        margin: 10px 0;
+        border: 1px solid rgba(255, 255, 255, 0.02);
+      }
+      .demo {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.01),
+          rgba(255, 255, 255, 0.015)
+        );
+        border-radius: 6px;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px dashed rgba(255, 255, 255, 0.02);
+      }
+      .box {
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 6px;
+        color: var(--muted);
+      }
+      .controls {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 8px 0 0 0;
+      }
+      button.control {
+        background: transparent;
+        color: var(--accent);
+        border: 1px solid rgba(56, 189, 248, 0.12);
+        padding: 6px 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 13px;
+      }
+      footer {
+        grid-column: 1 / -1;
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 8px;
+        text-align: right;
+      }
+      /* Examples - used in demo area */
+      .example-flex {
+        display: flex;
+        gap: 8px;
+        padding: 12px;
+        background: linear-gradient(180deg, #061226, #07182b);
+        border-radius: 8px;
+      }
+      .example-flex .item {
+        background: linear-gradient(180deg, #0b5f7f, #0a4b66);
+        color: white;
+        padding: 14px;
+        border-radius: 6px;
+        min-width: 40px;
+        text-align: center;
+      }
+      .example-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        padding: 12px;
+        background: linear-gradient(180deg, #071026, #04121a);
+        border-radius: 8px;
+      }
+      .example-grid .cell {
+        background: #06314a;
+        padding: 16px;
+        border-radius: 6px;
+        color: #cff3ff;
+        text-align: center;
+      }
+      /* Responsive demo */
+      @media (max-width: 880px) {
+        .wrap {
+          grid-template-columns: 1fr;
+          padding: 16px;
+        }
+        nav {
+          height: auto;
+          position: relative;
+          top: 0;
+          order: 2;
+        }
+        article {
+          order: 1;
+          height: auto;
+        }
+      }
+      /* small code highlight */
+      .kw {
+        color: #7dd3fc;
+      }
+      .sel {
+        color: #9f7aea;
+      }
+      .fn {
+        color: #34d399;
+      }
+      .val {
+        color: #fca5a5;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap" role="main">
+      <header>
+        <div>
+          <h1>Complete CSS Tutorial — Quick Reference</h1>
+          <p class="muted">
+            Core concepts, examples, and live demos you can copy into your
+            projects.
+          </p>
+        </div>
+      </header>
+
+      <nav aria-label="Table of contents">
+        <a href="Book_index.html">back to index</a>
+        <a href="#basics">1. Basics & Syntax</a>
+        <a href="#selectors">2. Selectors</a>
+        <a href="#boxmodel">3. Box Model</a>
+        <a href="#display-position">4. Display & Position</a>
+        <a href="#flexbox">5. Flexbox</a>
+        <a href="#grid">6. Grid</a>
+        <a href="#typography">7. Typography</a>
+        <a href="#colors">8. Colors & Gradients</a>
+        <a href="#transitions-animations">9. Transitions & Animations</a>
+        <a href="#responsive">10. Responsive & Media Queries</a>
+        <a href="#advanced">11. Advanced (Vars, calc, functions)</a>
+        <a href="#tools">12. Tools & Best Practices</a>
+      </nav>
+
+      <article>
+        <section id="basics">
+          <h2>1. Basics & Syntax</h2>
+          <p class="lead">
+            CSS applies styles to HTML using selectors and declarations. Basic
+            rule:
+          </p>
+          <pre
+            class="code"
+          ><span class="sel">selector</span> { <span class="kw">property</span>: <span class="val">value</span>; }</pre>
+
+          <h3>External, internal, inline</h3>
+          <p class="muted">Prefer external CSS for maintainability.</p>
+          <pre class="code">
+&lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;style&gt;
+  body { font-family: system-ui; }
+&lt;/style&gt;
+&lt;div style="color:red"&gt;Inline&lt;/div&gt;</pre
+          >
+        </section>
+
+        <section id="selectors">
+          <h2>2. Selectors</h2>
+          <p class="lead">Common selector types</p>
+          <pre class="code">
+/* type selector */     p { color: #fff; }
+/* class */             .btn { padding: 8px; }
+/* id */                #main { max-width: 1200px; }
+/* descendant */        .nav a { color: #9aa; }
+/* child */             .list &gt; li { margin: 8px 0; }
+/* group */             h1, h2, h3 { font-weight:600; }
+/* attribute */         input[type="text"] { border-radius:4px; }
+/* pseudo-classes */    a:hover, input:focus { outline:none; }
+/* pseudo-elements */   p::first-line { font-weight:700; }
+        </pre
+          >
+          <p class="muted">
+            Specificity: inline &gt; id &gt; class/attribute/pseudo &gt;
+            element. Later rules override earlier ones when specificity is
+            equal.
+          </p>
+        </section>
+
+        <section id="boxmodel">
+          <h2>3. Box Model</h2>
+          <p class="lead">
+            Content + padding + border + margin. Use box-sizing for predictable
+            layouts.
+          </p>
+          <pre class="code">
+* { box-sizing: border-box; }
+.box {
+  width: 200px; padding: 12px; border: 2px solid #123; margin: 16px;
+}</pre
+          >
+          <div class="demo">
+            <div class="box">Box model sample (padding, border, margin)</div>
+          </div>
+        </section>
+
+        <section id="display-position">
+          <h2>4. Display & Position</h2>
+          <p class="lead">Control layout with display and position values.</p>
+          <pre class="code">
+/* display */
+.block { display:block; }
+.inline { display:inline; }
+.inline-block { display:inline-block; }
+.none { display:none; }
+
+/* position */
+static (default), relative, absolute, fixed, sticky
+.relative { position:relative; top:0; left:0; }
+.absolute { position:absolute; top:8px; right:8px; }</pre
+          >
+          <p class="muted">Sticky requires a scroll container and top value.</p>
+        </section>
+
+        <section id="flexbox">
+          <h2>5. Flexbox</h2>
+          <p class="lead">One-dimensional layout system for rows or columns.</p>
+          <pre class="code">
+.container { display:flex; gap:8px; align-items:center; justify-content:space-between; }
+.item { flex: 1 1 120px; /* grow shrink basis */ }</pre
+          >
+
+          <h3>Demo</h3>
+          <div class="demo example-flex" id="flex-demo">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+          </div>
+          <div class="controls">
+            <button class="control" data-action="row">row</button>
+            <button class="control" data-action="column">column</button>
+            <button class="control" data-action="center">center</button>
+            <button class="control" data-action="wrap">wrap</button>
+          </div>
+
+          <pre class="code">
+/* common properties */
+flex-direction: row | column;
+justify-content: flex-start | center | space-between | space-around | space-evenly;
+align-items: flex-start | center | stretch;
+flex-wrap: nowrap | wrap | wrap-reverse;
+gap: 8px;</pre
+          >
+        </section>
+
+        <section id="grid">
+          <h2>6. Grid</h2>
+          <p class="lead">Two-dimensional layout: rows and columns.</p>
+          <pre class="code">
+.grid { display:grid; grid-template-columns: 1fr 2fr; gap:12px; }
+.grid-auto { grid-auto-flow: dense; }
+.grid-resp { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }</pre
+          >
+
+          <h3>Demo</h3>
+          <div class="demo example-grid">
+            <div class="cell">A</div>
+            <div class="cell">B</div>
+            <div class="cell">C</div>
+            <div class="cell">D</div>
+          </div>
+        </section>
+
+        <section id="typography">
+          <h2>7. Typography</h2>
+          <p class="lead">Fonts, sizes, spacing, and responsive type.</p>
+          <pre class="code">
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; line-height:1.45; }
+h1 { font-size: clac(1.8rem); }
+.small { font-size: 0.85rem; color: var(--muted);} /* use rem for scaling */</pre
+          >
+
+          <p class="muted">
+            Use rem for sizes, font-display for webfonts, and limit line-length
+            for readability (50–75 chars).
+          </p>
+        </section>
+
+        <section id="colors">
+          <h2>8. Colors & Gradients</h2>
+          <p class="lead">Color formats and gradients.</p>
+          <pre class="code">
+/* formats */
+color: #0ea5e9;        /* hex */
+color: rgba(14,165,233,0.85); /* rgba */
+color: hsl(195, 85%, 52%);
+
+/* gradients */
+background: linear-gradient(90deg, #06b6d4, #7c3aed);
+background: radial-gradient(circle at 20% 20%, #ff7, transparent 30%);</pre
+          >
+        </section>
+
+        <section id="transitions-animations">
+          <h2>9. Transitions & Animations</h2>
+          <p class="lead">Smooth property changes and keyframe animations.</p>
+          <pre class="code">
+/* transition */
+.button { transition: transform 180ms ease, box-shadow 180ms ease; }
+.button:hover { transform: translateY(-2px); }
+
+/* keyframes */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+.float { animation: float 3s ease-in-out infinite; }</pre
+          >
+
+          <div class="demo">
+            <div class="box float">Floating demo (uses keyframes)</div>
+          </div>
+        </section>
+
+        <section id="responsive">
+          <h2>10. Responsive & Media Queries</h2>
+          <p class="lead">Adapt layout to viewport size.</p>
+          <pre class="code">
+/* mobile-first */
+.container { padding: 16px; }
+@media (min-width: 640px) {
+  .container { padding: 24px; }
+}
+@media (min-width: 1024px) {
+  .container { max-width: 1100px; margin:auto; }
+}
+
+/* responsive grid */
+.grid-resp { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }</pre
+          >
+        </section>
+
+        <section id="advanced">
+          <h2>11. Advanced (Variables, calc, functions)</h2>
+          <p class="lead">Modern CSS features for flexibility.</p>
+          <pre class="code">
+:root {
+  --gap: 12px;
+  --brand: #0ea5e9;
+}
+.container { gap: var(--gap); color: var(--brand); }
+
+/* calc */
+.card { width: calc(100% / 3 - 16px); }
+
+/* clamp for fluid typography */
+h1 { font-size: clamp(1.2rem, 2.4vw, 2.2rem); }</pre
+          >
+
+          <p class="muted">
+            CSS variables are dynamic and cascade. Use them for theming and
+            responsive tweaks.
+          </p>
+        </section>
+
+        <section id="tools">
+          <h2>12. Tools & Best Practices</h2>
+          <ul class="muted">
+            <li>
+              Normalize/Reset: use a well-tested reset (normalize.css) or
+              minimal reset.
+            </li>
+            <li>Use box-sizing: border-box globally.</li>
+            <li>
+              Prefer logical properties (margin-block, padding-inline) for
+              writing-mode support.
+            </li>
+            <li>
+              Keep specificity low; favor class-based styles over nested
+              selectors.
+            </li>
+            <li>
+              Use DevTools to inspect computed styles, layout, and performance.
+            </li>
+            <li>
+              Consider a utility system (Tailwind) or component CSS with BEM for
+              scale.
+            </li>
+          </ul>
+          <p class="muted">Resources: MDN Web Docs, CSS-Tricks, Can I Use.</p>
+        </section>
+
+        <footer>
+          Compact reference. Copy examples and modify for experimentation.
+        </footer>
+      </article>
+    </div>
+
+    <script>
+      // Interactive controls for flex demo
+      (function () {
+        const demo = document.getElementById("flex-demo");
+        const buttons = document.querySelectorAll(".control[data-action]");
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const action = btn.getAttribute("data-action");
+            demo.style.flexDirection = "";
+            demo.style.justifyContent = "";
+            demo.style.flexWrap = "";
+            demo.style.alignItems = "";
+            switch (action) {
+              case "row":
+                demo.style.flexDirection = "row";
+                break;
+              case "column":
+                demo.style.flexDirection = "column";
+                break;
+              case "center":
+                demo.style.justifyContent = "center";
+                demo.style.alignItems = "center";
+                break;
+              case "wrap":
+                demo.style.flexWrap = "wrap";
+                break;
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

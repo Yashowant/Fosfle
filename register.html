@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/png" href="download.png" />
+    <meta charset="UTF-8" />
+    <title>Registaration</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #e8f0fe;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      form {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        width: 320px;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin: 6px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #4285f4;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 8px;
+      }
+      button:hover {
+        background: #3367d6;
+      }
+      #msg {
+        margin-top: 10px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .btn {
+        margin-top: 30px;
+        padding: 12px 30px;
+        background: linear-gradient(45deg, #00fff7, #ff00f7);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: white;
+        transition: 0.4s;
+      }
+
+      .btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px #00fff7;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="myForm">
+      <h2>Registration</h2>
+      <button class="btn" onclick="backToHome()">Back to Home</button>
+
+      <script>
+        function backToHome() {
+          // Adjust the path depending on where 'book_index.html' is located
+          const confirmation = confirm(
+            "Do you really want to go back to home?"
+          );
+          if (confirmation) {
+            window.location.href = "index.html"; // Ensure this path is correct
+          }
+        }
+      </script>
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="number" name="age" placeholder="Age" required />
+      <label>Date of Birth</label>
+      <input type="date" name="dob" required />
+      <input type="email" name="gmail" placeholder="Gmail" required />
+      <input type="text" name="address" placeholder="Address" required />
+      <input type="text" name="country" placeholder="Country" required />
+      <input
+        type="text"
+        name="aadhar"
+        placeholder="Topic which you do for test"
+        required
+      />
+      <button type="submit">Submit</button>
+      <p id="msg"></p>
+    </form>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzZ2fkLtnUXOPb-U5P2c4TOkDATMuEBTmhNLm2j4f5DSlXe_ZmTqjbKdqrpLw_3ABr-3A/exec"; // your URL here
+
+      document.getElementById("myForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const msg = document.getElementById("msg");
+        msg.textContent = "Submitting...";
+
+        fetch(scriptURL, { method: "POST", body: new FormData(e.target) })
+          .then((res) => res.text())
+          .then((txt) => {
+            msg.textContent = txt;
+            e.target.reset();
+          })
+          .catch((err) => (msg.textContent = "⚠️ Error: " + err.message));
+      });
+    </script>
+  </body>
+</html>

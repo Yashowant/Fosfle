@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Full JavaScript + HTML + Backend (Node) Tutorial</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+        max-width: 900px;
+        margin: 24px auto;
+        line-height: 1.5;
+        color: #111;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #0b5;
+      }
+      pre {
+        background: #f6f8fa;
+        padding: 12px;
+        overflow: auto;
+        border-radius: 6px;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
+          "Courier New", monospace;
+      }
+      .example {
+        border-left: 4px solid #0b5;
+        padding: 12px;
+        margin: 10px 0;
+        background: #fbfffb;
+        border-radius: 6px;
+      }
+      button.demo {
+        margin-top: 8px;
+        padding: 8px 12px;
+        border: 0;
+        background: #0b5;
+        color: #002;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      nav {
+        position: sticky;
+        top: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 8px;
+        border-radius: 6px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      }
+      aside {
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 18px;
+      }
+      .col {
+        display: flex;
+        gap: 12px;
+      }
+      .col > div {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <strong>JavaScript + HTML + Backend Tutorial (compact)</strong>
+    </nav>
+
+    <a href="Book_index.html">back to index</a>
+
+    <h1>Full JavaScript + HTML + Backend (Node) Tutorial</h1>
+    <aside>
+      Short guide with runnable frontend examples and copy-paste backend
+      snippets. Save this file as js.html and open it in your browser.
+    </aside>
+
+    <h2>Contents</h2>
+    <ol>
+      <li>Setup & tools</li>
+      <li>Language basics (variables, types, functions)</li>
+      <li>DOM & Events</li>
+      <li>Async (Promises, async/await)</li>
+      <li>Fetch API and simple REST client</li>
+      <li>Modules and bundling notes</li>
+      <li>Node.js backend: plain HTTP and Express examples</li>
+      <li>Quick tips (debugging, testing, deployment)</li>
+    </ol>
+
+    <h2 id="setup">1. Setup & tools</h2>
+    <ul>
+      <li>Browser for frontend (Chrome/Edge/Firefox).</li>
+      <li>Node.js (v14+) and npm for backend: https://nodejs.org/</li>
+      <li>Editor: VS Code recommended.</li>
+      <li>
+        Use npm init -y to create package.json. Install packages with npm
+        install.
+      </li>
+    </ul>
+
+    <h2 id="basics">2. Language basics</h2>
+    <div class="example">
+      <pre><code>// variables & types
+const num = 42;            // number
+let name = "Alice";        // string
+const isOk = true;         // boolean
+const arr = [1,2,3];
+const obj = { id:1, x: 'y' };
+
+// functions
+function add(a,b){ return a+b; }
+const square = x => x*x; // arrow function
+
+console.log(add(3,4), square(5));</code></pre>
+    </div>
+
+    <h2 id="dom">3. DOM & Events (live examples)</h2>
+    <p>Open console to see logs. Click buttons to run examples.</p>
+
+    <div class="example">
+      <div class="col">
+        <div>
+          <h3>Update DOM</h3>
+          <div id="greeting">Hello — no name yet</div>
+          <input id="nameInput" placeholder="Type name" />
+          <button id="applyName" class="demo">Apply name</button>
+        </div>
+        <div>
+          <h3>Create elements</h3>
+          <button id="addItem" class="demo">Add list item</button>
+          <ul id="list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // DOM example handlers
+      document.getElementById("applyName").addEventListener("click", () => {
+        const input = document.getElementById("nameInput");
+        const name = input.value.trim() || "friend";
+        document.getElementById("greeting").textContent = `Hello, ${name}!`;
+        console.log("Greeting set to", name);
+      });
+
+      document.getElementById("addItem").addEventListener("click", () => {
+        const ul = document.getElementById("list");
+        const li = document.createElement("li");
+        li.textContent = "Item " + (ul.children.length + 1);
+        ul.appendChild(li);
+      });
+    </script>
+
+    <h2 id="async">4. Async: Promises & async/await</h2>
+    <div class="example">
+      <pre><code>// Promise example
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function demo() {
+    console.log('waiting 500ms...');
+    await wait(500);
+    console.log('done');
+}
+demo();</code></pre>
+    </div>
+
+    <h2 id="fetch">5. Fetch API (client for REST)</h2>
+    <div class="example">
+      <p>
+        Fetch a public JSON placeholder. Click button to run (CORS permitting).
+      </p>
+      <button id="fetchBtn" class="demo">Fetch post #1</button>
+      <pre id="fetchResult"></pre>
+    </div>
+
+    <script>
+      document
+        .getElementById("fetchBtn")
+        .addEventListener("click", async () => {
+          const out = document.getElementById("fetchResult");
+          out.textContent = "Loading...";
+          try {
+            const res = await fetch(
+              "https://jsonplaceholder.typicode.com/posts/1"
+            );
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            const data = await res.json();
+            out.textContent = JSON.stringify(data, null, 2);
+          } catch (err) {
+            out.textContent = "Error: " + err.message;
+          }
+        });
+    </script>
+
+    <h2 id="modules">6. Modules & bundlers</h2>
+    <ul>
+      <li>
+        Browser modules: use &lt;script type="module"&gt; to import/export in
+        modern browsers.
+      </li>
+      <li>
+        Node: use CommonJS (require) by default, or set "type": "module" in
+        package.json to enable ES modules.
+      </li>
+      <li>
+        Bundlers: Vite / webpack / Parcel used for production builds with many
+        assets.
+      </li>
+    </ul>
+    <pre><code>// Example module (save as math.js)
+export function add(a,b){ return a+b; }
+
+// In browser page
+// <script type="module">
+// import { add } from './math.js';
+// console.log(add(2,3));
+// </script>
+</code></pre>
+
+    <h2 id="node">7. Node.js backend — quick examples</h2>
+    <p>Below are two server examples. Save each to a file and run with node.</p>
+
+    <h3>7.1 Plain HTTP server (node built-in)</h3>
+    <pre><code>// Save as server.js
+const http = require('http');
+
+const PORT = 3000;
+const server = http.createServer((req, res) => {
+    if (req.method === 'GET' && req.url === '/') {
+        res.writeHead(200, {'Content-Type':'text/plain'});
+        res.end('Hello from basic Node server\n');
+        return;
+    }
+    // Simple JSON API
+    if (req.method === 'GET' && req.url === '/api/ping') {
+        res.writeHead(200, {'Content-Type':'application/json'});
+        res.end(JSON.stringify({msg:'pong', time: Date.now()}));
+        return;
+    }
+    res.writeHead(404, {'Content-Type':'text/plain'});
+    res.end('Not found');
+});
+
+server.listen(PORT, () => {
+    console.log('Server listening on http://localhost:' + PORT);
+});
+</code></pre>
+    <p>Run: node server.js</p>
+
+    <h3>7.2 Express REST API (recommended for real apps)</h3>
+    <pre><code>// Save as app.js
+// Install: npm init -y
+// npm install express
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json()); // parse JSON body
+
+let items = [{ id: 1, name: 'Item 1' }];
+
+app.get('/api/items', (req, res) => {
+    res.json(items);
+});
+
+app.post('/api/items', (req, res) => {
+    const { name } = req.body;
+    if (!name) return res.status(400).json({ error: 'name required' });
+    const item = { id: Date.now(), name };
+    items.push(item);
+    res.status(201).json(item);
+});
+
+app.listen(PORT, () => console.log('Express listening on', PORT));
+</code></pre>
+    <p>Run: npm install express && node app.js</p>
+
+    <h3>7.3 CORS note</h3>
+    <p>
+      If you call your API from a browser page on a different origin, enable
+      CORS:
+    </p>
+    <pre><code>// In Express
+// npm install cors
+const cors = require('cors');
+app.use(cors());
+</code></pre>
+
+    <h2 id="tips">8. Quick tips</h2>
+    <ul>
+      <li>
+        Console.log and debugger in browser devtools are primary debug tools.
+      </li>
+      <li>Use Node's --inspect and Chrome DevTools to debug server code.</li>
+      <li>Write tests: Jest, Mocha+Chai, or Node's built-in test runner.</li>
+      <li>
+        Use environment variables (process.env) for secrets; never commit them.
+      </li>
+      <li>
+        Deployment: Vercel/Netlify for static + serverless; Heroku,
+        DigitalOcean, AWS for servers/containers.
+      </li>
+    </ul>
+
+    <h2 id="extras">9. Useful commands & package.json example</h2>
+    <pre><code>{
+    "name": "my-app",
+    "version": "1.0.0",
+    "type": "commonjs",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "NODE_ENV=development nodemon app.js"
+    },
+    "dependencies": {
+        "express": "^4.18.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.0"
+    }
+}
+</code></pre>
+
+    <h2 id="learnmore">Further learning</h2>
+    <ul>
+      <li>MDN Web Docs - JavaScript: reference and tutorials.</li>
+      <li>Node.js official docs and Express docs for backend details.</li>
+      <li>
+        Practice by building small projects: to-do app, notes app, REST API with
+        DB.
+      </li>
+    </ul>
+
+    <hr />
+    <p>
+      Tip: copy server snippets into separate files (server.js or app.js) and
+      run with Node. The frontend examples in this file are runnable in the
+      browser.
+    </p>
+  </body>
+</html>
