@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Home -->
+  <url>
+    <loc>https://fosfle.netlify.app/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Main Menu Pages -->
+  <url>
+    <loc>https://fosfle.netlify.app/menue/aboutus.html</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://fosfle.netlify.app/menue/services.html</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://fosfle.netlify.app/menue/contact.html</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://fosfle.netlify.app/menue/find.html</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://fosfle.netlify.app/menue/help.html</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Registration -->
+  <url>
+    <loc>https://fosfle.netlify.app/authi/register.html</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Blog Index -->
+  <url>
+    <loc>https://fosfle.netlify.app/blog/index.html</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Author Page -->
+  <url>
+    <loc>https://fosfle.netlify.app/authors/yashowant-meher.html</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Blog Articles -->
+  <url>
+    <loc>https://fosfle.netlify.app/blog/blog.html</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- PROJECT LAB SECTION -->
+  <url>
+    <loc>https://fosfle.netlify.app/project/projectlab.html</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Python Projects -->
+  <url>
+    <loc>https://fosfle.netlify.app/project/pythonpj.html</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+    <priority>0.70</priority>
+  </url>
+
+
+</urlset>
